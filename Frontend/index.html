@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dog Management System</h1>
+        
+        <!-- Dog Information Form -->
+        <section class="form-section">
+            <h2>Dog Information</h2>
+            <form id="dogForm">
+                <div class="form-group">
+                    <label for="userId">User ID:</label>
+                    <input type="text" id="userId" name="userId" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dogName">Dog Name:</label>
+                    <input type="text" id="dogName" name="dogName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dogAge">Age (years):</label>
+                    <input type="number" id="dogAge" name="dogAge" min="0" max="30" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dogBreed">Breed(s):</label>
+                    <select id="dogBreed" name="dogBreed" multiple required>
+                        <option value="super_mutt">Super Mutt</option>
+                        <option value="unknown">unknown - no genetic lab results</option>
+                        <option value="mixed">mixed</option>
+                        <option value="american_pit_bull_terrier">American Pit Bull Terrier</option>
+                        <option value="beagle">Beagle</option>
+                        <option value="catahoula_leopard_dog">Catahoula Leopard Dog</option>
+                        <option value="chihuahua">Chihuahua</option>
+                        <option value="french_bulldog">French Bulldog</option>
+                        <option value="golden_retriever">Golden Retriever</option>
+                        <option value="labrador_retriever">Labrador Retriever</option>
+                        <option value="shih_tzu">Shih Tzu</option>
+                        <option value="yorkshire_terrier">Yorkshire Terrier</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <small>Hold Ctrl (Cmd on Mac) to select multiple breeds. Please mark the most common breeds that are 5% or more of your dog's genetic makeup.</small>
+                </div>
+                
+                <div class="form-group" id="otherBreedsGroup" style="display: none;">
+                    <label for="otherBreeds">Other Breed Types:</label>
+                    <input type="text" id="otherBreeds" name="otherBreeds" placeholder="Enter additional breed types separated by commas">
+                    <small>Enter any additional breeds not listed above, separated by commas</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dogWeight">Weight (lbs):</label>
+                    <input type="number" id="dogWeight" name="dogWeight" min="1" max="200" step="0.1" required>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Save Dog Info</button>
+                    <button type="button" id="updateDogBtn" class="btn btn-secondary" style="display: none;">Update Dog Info</button>
+                    <button type="button" id="deleteDogBtn" class="btn btn-danger" style="display: none;">Delete Dog</button>
+                    <button type="button" id="clearDogForm" class="btn btn-outline">Clear Form</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Diet Information Form -->
+        <section class="form-section">
+            <h2>Diet Information</h2>
+            <form id="dietForm">
+                <div class="form-group">
+                    <label for="dietUserId">User ID:</label>
+                    <input type="text" id="dietUserId" name="dietUserId" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="foodType">Food Type:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="foodType" value="dry" required> Dry Food</label>
+                        <label><input type="radio" name="foodType" value="wet" required> Wet Food</label>
+                        <label><input type="radio" name="foodType" value="both" required> Both</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Amount per serving:</label>
+                    <input type="text" id="amount" name="amount" placeholder="e.g., 1 cup, 2 cans" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="feedingTimes">Times fed per day:</label>
+                    <input type="number" id="feedingTimes" name="feedingTimes" min="1" max="6" required>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Save Diet Info</button>
+                    <button type="button" id="updateDietBtn" class="btn btn-secondary" style="display: none;">Update Diet Info</button>
+                    <button type="button" id="deleteDietBtn" class="btn btn-danger" style="display: none;">Delete Diet</button>
+                    <button type="button" id="clearDietForm" class="btn btn-outline">Clear Form</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Search and Display Section -->
+        <section class="display-section">
+            <h2>Search and Manage Records</h2>
+            <div class="search-group">
+                <input type="text" id="searchUserId" placeholder="Enter User ID to search">
+                <button id="searchBtn" class="btn btn-primary">Search Records</button>
+            </div>
+            
+            <div id="searchResults" class="results-container"></div>
+        </section>
+
+        <!-- All Records Display -->
+        <section class="display-section">
+            <h2>All Records</h2>
+            <div class="form-buttons">
+                <button id="showAllBtn" class="btn btn-info">Show All Records</button>
+                <button id="clearAllBtn" class="btn btn-warning">Clear All Data</button>
+            </div>
+            <div id="allRecords" class="results-container"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
